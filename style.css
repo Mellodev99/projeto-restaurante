@@ -27,3 +27,33 @@ header {
     padding: 20px;
     text-align: center;
 }
+
+#limparRelatorios {
+    background-color: #E85D04;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+#limparRelatorios:hover {
+    background-color: #FF6B00;
+}
+#back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #FF6B00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.botoes-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}

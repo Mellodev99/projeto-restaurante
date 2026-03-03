@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pedidos:</h1>
+
+    </header>
+    <main>
+    <h2>Relatório de Pedidos</h2>
+    <div id="lista-pedidos">
+        </div>
+    <div class="botoes-acoes">
+        <button onclick="limparHistorico()" id="limparRelatorios">Limpar Relatórios</button>
+        <br><a href="index.html" id="back">Voltar para Pedidos</a>
+    </div>
+</main>
+
+<script>
+
+   // 1. Função principal: Executa assim que a página abre
+function exibirPedidos() {
+    // Busca os dados no localStorage e converte de volta para objeto
+    const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+    const listaPedidos = document.getElementById('lista-pedidos');
+    
+    // Limpa a área de exibição antes de desenhar (evita duplicatas)
+    listaPedidos.innerHTML = '';
+
+    // Verifica se há algo para mostrar
+    if (pedidos.length === 0) {
+        listaPedidos.innerHTML = '<p>Nenhum pedido registrado no sistema.</p>';
+        return;
+    }
+
+    // 2. Loop para criar o HTML de cada pedido
+    pedidos.forEach((pedido) => {
+        const pedidoDiv = document.createElement('div');
+        pedidoDiv.classList.add('pedido-card'); // Você pode estilizar isso no CSS
+
+        // Importante: Usamos os nomes de campos que você salvou: 
+        // 'numero', 'cliente', 'mesa', 'itens', 'total' e 'data'
+        pedidoDiv.innerHTML = `
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 8px;">
+                <h3>Comanda ${pedido.numero}</h3>
+                <p><strong>Data:</strong> ${pedido.data}</p>
+                <p><strong>Cliente:</strong> ${pedido.cliente}</p>
+                <p><strong>Mesa:</strong> ${pedido.mesa}</p>
+                <hr>
+                <ul>${pedido.itens}</ul>
+                <p><strong>Total Pago: R$ ${pedido.total}</strong></p>
+            </div>
+        `;
+        listaPedidos.appendChild(pedidoDiv);
+    });
+}
+
+// 3. Função para apagar tudo (Cuidado!)
+function limparHistorico() {
+    if (confirm("Tem certeza que deseja apagar todos os relatórios?")) {
+        localStorage.removeItem('pedidos');
+        localStorage.setItem('numeroComanda', 1); // Reseta a contagem de comandas também
+        exibirPedidos(); // Atualiza a tela
+    }
+}
+
+// 4. CHAMA A FUNÇÃO: Se você não chamar, a página nasce vazia!
+window.onload = exibirPedidos;
+</script>
+    
+</body>
+</html>

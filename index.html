@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="#">Comandas</a></li>
                 <li><a href="#">Mesas</a></li>
-                <li><a href="#">Relatórios</a></li>
+                <li><a href="relatorios.html">Relatórios</a></li>
             </ul>
         </nav>
     </header>
@@ -98,6 +98,7 @@
     // Controle da comanda
     let numeroComanda = 1;
     let total = 0;
+    let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
 
     const cardapio = {
         "Refeição R$7,00": 7,
@@ -172,6 +173,8 @@
         // Limpa campos
         itemInput.value = "";
         selecionados.forEach(op => op.checked = false);
+
+        
     }
 
     function gerarNumeroComanda() {
@@ -200,31 +203,53 @@
 
 
 
-    function fecharPedido() {
-
-        if (total === 0) {
-            alert("Nenhum item na comanda!");
-            return;
-        }
-
-        alert("Pedido #" + numeroComanda.toString().padStart(4, "0") + " finalizado!");
-
-        numeroComanda++;
-        total = 0;
-
-        document.getElementById("total").textContent = "0.00";
-        document.getElementById("lista-comanda").innerHTML = "";
-
-        gerarNumeroComanda();
-
-        // Libera campos
-        document.getElementById("nome").disabled = false;
-        document.getElementById("mesa").disabled = false;
-
-        document.getElementById("nome").value = "";
-        document.getElementById("cliente-comanda").textContent = "-";
-        document.getElementById("mesa-comanda").textContent = "-";
+   function fecharPedido() {
+    // 1. Verificação inicial: O total global é zero?
+    if (total === 0) {
+        alert("Nenhum item na comanda!");
+        return;
     }
+
+    // 2. Coleta os dados ANTES de limpar a tela
+    const cliente = document.getElementById("cliente-comanda").textContent;
+    const mesa = document.getElementById("mesa-comanda").textContent;
+    const itensHTML = document.getElementById("lista-comanda").innerHTML;
+    const valorFinal = total; // Salva o valor atual antes de zerar a variável global
+
+    // 3. Cria o objeto do pedido
+    const pedido = {
+        numero: "#" + numeroComanda.toString().padStart(4, "0"),
+        cliente: cliente,
+        mesa: mesa,
+        itens: itensHTML,
+        total: valorFinal.toFixed(2),
+        data: new Date().toLocaleString()
+    };
+
+    // 4. Salva no LocalStorage
+    let pedidosExistentes = JSON.parse(localStorage.getItem("pedidos")) || [];
+    pedidosExistentes.push(pedido);
+    localStorage.setItem("pedidos", JSON.stringify(pedidosExistentes));
+
+    // 5. Feedback para o usuário
+    alert("Pedido " + pedido.numero + " finalizado e salvo com sucesso!");
+
+    // 6. Reseta o sistema para o próximo cliente
+    numeroComanda++;
+    total = 0; // Zera a variável global
+
+    // Limpa a interface visual
+    document.getElementById("total").textContent = "0.00";
+    document.getElementById("lista-comanda").innerHTML = "";
+    document.getElementById("nome").disabled = false;
+    document.getElementById("mesa").disabled = false;
+    document.getElementById("nome").value = "";
+    document.getElementById("cliente-comanda").textContent = "-";
+    document.getElementById("mesa-comanda").textContent = "-";
+
+    // Atualiza o número visual da próxima comanda
+    gerarNumeroComanda();
+}
 
    
     // Gera número inicial ao carregar
