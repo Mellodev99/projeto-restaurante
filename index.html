@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marmita Top10</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
 </head>
 <body>
     <header>
+        
         <h1>Quentinha Top</h1>
+        <span class="material-symbols-outlined" id="btn-menu" onclick="toggleMenu()">
+menu
         <nav>
-            <ul>
+            <ul id="menu-links">
                 <li><a href="#">Comandas</a></li>
-                <li><a href="#">Mesas</a></li>
+                <li><a href="#">Fluxo de Caixa</a></li>
                 <li><a href="relatorios.html">Relatórios</a></li>
             </ul>
         </nav>
@@ -254,6 +258,13 @@
    
     // Gera número inicial ao carregar
     gerarNumeroComanda();
+
+    function toggleMenu() {
+    const menu = document.getElementById('menu-links');
+    
+    // O comando toggle coloca a classe se não existir, e tira se já existir
+    menu.classList.toggle('aberto');
+}
 </script>
 
 
