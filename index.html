@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marmita Top10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Marmita Top10</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Comandas</a></li>
+                <li><a href="#">Mesas</a></li>
+                <li><a href="#">Relatórios</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Novo Pedido:</h2>
+        <p>Selecione a mesa e adicione os itens do pedido.</p>
+        <form action="" method="get">
+            <!-- Seleção da mesa -->
+            <label for="mesa">Mesa:</label>
+            <select id="mesa" name="mesa">
+                <option value="1">Mesa 1</option>
+                <option value="2">Mesa 2</option>
+                <option value="3">Mesa 3</option>
+                <option value="4">Mesa 4</option>
+                <option value="5">Mesa 5</option>
+            </select>
+            <br><br>
+                <label for="item">Valor da refeição:</label>
+
+                <input list="itens" id="item" name="item">
+
+                <datalist id="itens">
+                    <option value="Refeição R$7,00">
+                    <option value="Refeição R$10,00">
+                </datalist>
+                <br><br>
+
+             <label for="bebidas">Bebidas:</label>
+
+                <input list="bebidas" id="ibebidas" name="bebidas" placeholder="Selecione uma bebida" required>
+                <!--Sugestões de bebidas-->
+                <datalist id="bebidas">
+                    <option value="Coca-Cola">
+                    <option value="Suco de Laranja">
+                    <option value="Água Mineral">
+                </datalist>
+            <br><br>
+
+         <input type="submit" value="Enviar">
+         <input type="reset" value="Limpar">
+        </form>
+    </main>
+    
+
+</body>
+</html>

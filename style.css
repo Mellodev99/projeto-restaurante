@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+/*
+Cor principal	Laranja forte	#FF6B00
+Hover / destaque	Laranja escuro	#E85D04
+Fundo claro	Creme	#FFF4E6
+Fundo escuro	Marrom escuro	#3A2E2A
+Texto	Cinza quase preto	#2B2B2B
+*/
+
+/*
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF4E6; /* fundo claro 
+    color: #2B2B2B;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to right, #FF6B00, #E85D04);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+*/
