@@ -30,9 +30,20 @@ body {
 header {
     background: linear-gradient(to right, #FF6B00, #E85D04);
     color: white;
-    padding: 20px;
-    text-align: center;
+    padding: 15 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
 }
+
+header .material-symbols-outlined {
+    color: white;
+    margin: 0;
+    font-size: 30px; /* Um pouco maior para facilitar o toque no celular */
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -61,22 +72,22 @@ header ul li a:hover {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    margin-top: 20px;
+    
     border-radius: 5px;
-    margin-left: 5px;
+   
 }
 #limparRelatorios:hover {
     background-color: #FF6B00;
 }
 #back {
     display: inline-block;
-    margin-top: 20px;
+  
     color: #ffffff;
     text-decoration: none;
     background-color: #FF6B00;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: 5px;
+   
 }
 .botoes-acoes {
     display: flex;
@@ -131,28 +142,47 @@ button:hover {
 }
 
 
-
-/* Celulares (Telas menores que 768px) */
-@media screen and (max-width: 767px) {
-    header ul {
-        display: none; /* Começa escondido no celular */
+/* Configuração para Celular (Mobile) */
+@media screen and (max-width: 768px) {
+    #menu-links {
+        display: none;       /* Começa escondido */
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
         width: 100%;
-        padding: 20px;
-        border-bottom: 2px solid #ccc;
+        background-color: #FF6B00;
+        position: absolute;
+        top: 60px;           /* Ajuste conforme a altura do seu header */
+        left: 0;
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        z-index: 1000;       /* Garante que fique por cima de tudo */
+        transition: 0.3s;          /* Animação suave para aparecer/desaparecer */
     }
+      header ul.aberto {
+        display: flex;
+      }
 
-    /* Classe que o JavaScript vai colocar/tirar para mostrar o menu */
-    header ul.aberto {
+    /* Quando o JS colocar a classe 'aberto', o menu aparece */
+    #menu-links.aberto {
         display: flex;
     }
 
-    .material-symbols-outlined {
-        display: block; /* Ícone aparece no celular */
+    #btn-menu {
+        display: block;      /* Mostra o ícone no celular */
         cursor: pointer;
+    }
+}
+
+
+/* Configuração para Computador (Desktop) */
+@media screen and (min-width: 769px) {
+    #btn-menu {
+        display: none;       /* Esconde o ícone no PC */
+    }
+
+    #menu-links {
+        display: flex !important; /* Menu sempre visível e deitado */
+        flex-direction: row;
+        gap: 20px;
     }
 }
 
