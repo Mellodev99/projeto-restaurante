@@ -51,12 +51,19 @@
                <input type="checkbox" name="opcao" value="Carne"> Carne<br>
                <input type="checkbox" name="opcao" value="Frango"> Frango<br>
                <input type="checkbox" name="opcao" value="Calabresa"> Calabresa<br>
-               <label>Acompanhamentos:</label><br>
 
-               <input type="checkbox" name="opcao" value="Arroz"> Arroz<br>
-               <input type="checkbox" name="opcao" value="Feijão"> Feijão<br>
-               <input type="checkbox" name="opcao" value="Macarrão"> Macarrão<br>
-               <input type="checkbox" name="opcao" value="Salada"> Salada<br>
+               <label class="acomp">Acompanhamentos:</label><br>
+
+     
+
+               <input type="checkbox" name="opcao" value="Arroz" class="acomp"> Arroz<br>
+               <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão<br>
+               <input type="checkbox" name="opcao" value="Macarrão" class="acomp"> Macarrão<br>
+               <input type="checkbox" name="opcao" value="Salada" class="acomp"> Salada<br>
+               
+                <button type="button" onclick="selecionarAcompanhamentos()">
+                    Selecionar todos
+                </button><br>
 
            
                 
@@ -173,6 +180,26 @@
             "#" + numeroComanda.toString().padStart(4, "0");
     }
 
+     function selecionarAcompanhamentos() {
+        const acompanhamentos = document.querySelectorAll('.acomp');
+
+        const  todosMarcados = [...acompanhamentos].every(item =>item.checked);
+        // Se todos já estão marcados, desmarca todos. Caso contrário, marca todos.
+            if (todosMarcados) {
+                acompanhamentos.forEach(acomp => {
+                    acomp.checked = false;
+                });
+                return;
+            }
+
+        acompanhamentos.forEach(acomp => {
+            acomp.checked = true;
+        });
+    }
+
+
+
+
     function fecharPedido() {
 
         if (total === 0) {
@@ -199,6 +226,7 @@
         document.getElementById("mesa-comanda").textContent = "-";
     }
 
+   
     // Gera número inicial ao carregar
     gerarNumeroComanda();
 </script>
