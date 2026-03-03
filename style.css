@@ -9,11 +9,14 @@ Fundo escuro	Marrom escuro	#3A2E2A
 Texto	Cinza quase preto	#2B2B2B
 */
 
-/*
+*{
+ /*font-family: Arial, sans-serif;*/
+}
+
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #FFF4E6; /* fundo claro 
-    color: #2B2B2B;
+    background-color: #FFF4E6; 
     margin: 0;
     padding: 0;
 }
@@ -24,4 +27,3 @@ header {
     padding: 20px;
     text-align: center;
 }
-*/

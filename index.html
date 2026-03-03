@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marmita Top10</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.cssss">
 </head>
 <body>
     <header>
@@ -19,11 +19,15 @@
     </header>
     <main>
         <h2>Novo Pedido:</h2>
-        <p>Selecione a mesa e adicione os itens do pedido.</p>
-        <form action="" method="get">
+        <p>Selecione a mesa e adicione os itens do pedido:</p>
+        <form action="novo_pedido.php" method="get">
+
+            <label for="nome" id="inome">Nome do Cliente:</label>
+            <input type="text" id="nome" name="nome" required>
             <!-- Seleção da mesa -->
             <label for="mesa">Mesa:</label>
             <select id="mesa" name="mesa">
+                <option value="0">Retirada</option>
                 <option value="1">Mesa 1</option>
                 <option value="2">Mesa 2</option>
                 <option value="3">Mesa 3</option>
@@ -31,9 +35,9 @@
                 <option value="5">Mesa 5</option>
             </select>
             <br><br>
-                <label for="item">Valor da refeição:</label>
+                <label for="item" >Valor da refeição:</label>
 
-                <input list="itens" id="item" name="item">
+                <input list="itens" id="item" name="item" required placeholder="Selecione uma refeição">
 
                 <datalist id="itens">
                     <option value="Refeição R$7,00">
@@ -41,22 +45,175 @@
                 </datalist>
                 <br><br>
 
-             <label for="bebidas">Bebidas:</label>
+                <!-- Opção de refeição -->
+               <label for="iopcao">Opções:</label> <br>
 
-                <input list="bebidas" id="ibebidas" name="bebidas" placeholder="Selecione uma bebida" required>
+               <input type="checkbox" name="opcao" value="Carne"> Carne<br>
+               <input type="checkbox" name="opcao" value="Frango"> Frango<br>
+               <input type="checkbox" name="opcao" value="Calabresa"> Calabresa<br>
+               <label>Acompanhamentos:</label><br>
+
+               <input type="checkbox" name="opcao" value="Arroz"> Arroz<br>
+               <input type="checkbox" name="opcao" value="Feijão"> Feijão<br>
+               <input type="checkbox" name="opcao" value="Macarrão"> Macarrão<br>
+               <input type="checkbox" name="opcao" value="Salada"> Salada<br>
+
+           
+                
+                <br><br>
+           
+            
+            
+                
+                <!--<input type="reset" value="Limpar Bebida" id="ibebidas">
+
                 <!--Sugestões de bebidas-->
-                <datalist id="bebidas">
-                    <option value="Coca-Cola">
-                    <option value="Suco de Laranja">
-                    <option value="Água Mineral">
-                </datalist>
+                <label for="ibebidas">Bebidas:</label> <br>
+                <input type="checkbox" name="opcao" value="Coca-Cola"> Coca-Cola<br>
+                <input type="checkbox" name="opcao" value="Suco de Laranja"> Suco de Laranja<br>
+                <input type="checkbox" name="opcao" value="Água Mineral"> Água Mineral<br>
             <br><br>
 
-         <input type="submit" value="Enviar">
-         <input type="reset" value="Limpar">
+         <button type="button" onclick="adicionarItem()">Adicionar Item</button>
+         <input type="reset" value="Limpar Pedido">
+         <h3>Comanda <span id="numero-comanda">#0001</span></h3>
+         <p><strong>Cliente:</strong> <span id="cliente-comanda">-</span></p>
+         <p><strong>Mesa:</strong> <span id="mesa-comanda">-</span></p>
+
+            <ul id="lista-comanda"></ul>
+
+            <p><strong>Total: R$ <span id="total">0.00</span></strong></p>
+             <button type="button" onclick="fecharPedido()">Fechar Pedido</button>
         </form>
     </main>
+
+    <script>
+        /*variavéis para controle da comanda*/
+       
+        let numeroComanda = 1;
+        let total = 0;
+
+    const cardapio = {
+        "Refeição R$7,00": 7,
+        "Refeição R$10,00": 10,
+        "Coca-Cola": 5,
+        "Suco de Laranja": 4,
+        "Água Mineral": 3,
+        "Carne": 0,
+        "Frango": 0,
+        "Calabresa": 0,
+        "Arroz": 0,
+        "Feijão": 0,
+        "Macarrão": 0,
+        "Salada": 0
+
+    };
+
+    const opcoesMarcadas = document.querySelectorAll('input[name="opcao"]:checked');
+
+    opcoesMarcadas.forEach(opcao => {
+        console.log("Opção selecionada: " + opcao.value);
+    });
+
+function adicionarItem() {
+    const selecionados = document.querySelectorAll('input[name="opcao"]:checked');
+    const nomeInput = document.getElementById("nome");
+    const mesaSelect = document.getElementById("mesa");
+    const clienteSpan = document.getElementById("cliente-comanda");
+    const mesaSpan = document.getElementById("mesa-comanda");
+
+    if (clienteSpan.textContent === "-") {
+        clienteSpan.textContent = nomeInput.value;
+        mesaSpan.textContent = "Mesa " + mesaSelect.value;
+
+        nomeInput.disabled = true;
+        mesaSelect.disabled = true;
+    }
+
+    const itemInput = document.getElementById("item");
+    const bebidaInput = document.getElementById("ibebidas");
+    const lista = document.getElementById("lista-comanda");
+    const totalSpan = document.getElementById("total");
+
+    let valor = 0;
+    let descricao = "";
+
+
+
+selecionados.forEach(opcao => {
+    descricao += (descricao ? " + " : "") + opcao.value;
+
+    if (cardapio[opcao.value] !== undefined) {
+        valor += cardapio[opcao.value];
+    }
+});
+   
+
+    const opcoesMarcadas = document.querySelectorAll('input[name="opcao"]:checked');
+
+    opcoesMarcadas.forEach(opcao => {
+        descricao += (descricao ? " + " : "") + opcao.value;
+
+        if (cardapio[opcao.value]) {
+            valor += cardapio[opcao.value];
+        }
+    });
+
+    if (valor === 0) {
+        alert("Selecione um item válido!");
+        return;
+    }
+
+    total += valor;
+
+    const li = document.createElement("li");
+    li.textContent = descricao + " = R$ " + valor.toFixed(2);
+
+    lista.appendChild(li);
+    totalSpan.textContent = total.toFixed(2);
+
+    itemInput.value = "";
+    bebidaInput.value = "";
+
+    opcoesMarcadas.forEach(op => op.checked = false);
+}
+   
     
+
+
+function gerarNumeroComanda() {
+    const numeroComandaSpan = document.getElementById("numero-comanda");
+    numeroComandaSpan.textContent = "#" + numeroComanda.toString().padStart(4, "0");
+}
+
+function fecharPedido() {
+
+    if (total === 0) {
+        alert("Nenhum item na comanda!");
+        return;
+    }
+
+    alert("Pedido #" + numeroComanda.toString().padStart(4, "0") + " finalizado!");
+
+    numeroComanda++; // aumenta só aqui
+
+    total = 0;
+    document.getElementById("total").textContent = "0.00";
+    document.getElementById("lista-comanda").innerHTML = "";
+
+    gerarNumeroComanda(); // atualiza visual
+
+    // liberar campos
+    document.getElementById("nome").disabled = false;
+    document.getElementById("mesa").disabled = false;
+
+    document.getElementById("nome").value = "";
+    document.getElementById("cliente-comanda").textContent = "-";
+    document.getElementById("mesa-comanda").textContent = "-";
+}
+
+
+</script>   
 
 </body>
 </html>
