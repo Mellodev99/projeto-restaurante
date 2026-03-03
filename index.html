@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Marmita Top10</h1>
+        <h1>Quentinha Top</h1>
         <nav>
             <ul>
                 <li><a href="#">Comandas</a></li>
@@ -68,7 +68,7 @@
                 <!--<input type="reset" value="Limpar Bebida" id="ibebidas">
 
                 <!--Sugestões de bebidas-->
-                <label for="ibebidas">Bebidas:</label> <br>
+                <label for="ibebidas" id="ibebidas">Bebidas:</label> <br>
                 <input type="checkbox" name="opcao" value="Coca-Cola"> Coca-Cola<br>
                 <input type="checkbox" name="opcao" value="Suco de Laranja"> Suco de Laranja<br>
                 <input type="checkbox" name="opcao" value="Água Mineral"> Água Mineral<br>
@@ -87,11 +87,10 @@
         </form>
     </main>
 
-    <script>
-        /*variavéis para controle da comanda*/
-       
-        let numeroComanda = 1;
-        let total = 0;
+  <script>
+    // Controle da comanda
+    let numeroComanda = 1;
+    let total = 0;
 
     const cardapio = {
         "Refeição R$7,00": 7,
@@ -106,114 +105,105 @@
         "Feijão": 0,
         "Macarrão": 0,
         "Salada": 0
-
     };
 
-    const opcoesMarcadas = document.querySelectorAll('input[name="opcao"]:checked');
+    function adicionarItem() {
 
-    opcoesMarcadas.forEach(opcao => {
-        console.log("Opção selecionada: " + opcao.value);
-    });
+        const nomeInput = document.getElementById("nome");
+        const mesaSelect = document.getElementById("mesa");
+        const clienteSpan = document.getElementById("cliente-comanda");
+        const mesaSpan = document.getElementById("mesa-comanda");
 
-function adicionarItem() {
-    const selecionados = document.querySelectorAll('input[name="opcao"]:checked');
-    const nomeInput = document.getElementById("nome");
-    const mesaSelect = document.getElementById("mesa");
-    const clienteSpan = document.getElementById("cliente-comanda");
-    const mesaSpan = document.getElementById("mesa-comanda");
+        // Define cliente e mesa apenas na primeira vez
+        if (clienteSpan.textContent === "-") {
+            clienteSpan.textContent = nomeInput.value;
+            mesaSpan.textContent = mesaSelect.value == "0"
+                ? "Retirada"
+                : "Mesa " + mesaSelect.value;
 
-    if (clienteSpan.textContent === "-") {
-        clienteSpan.textContent = nomeInput.value;
-        mesaSpan.textContent = "Mesa " + mesaSelect.value;
-
-        nomeInput.disabled = true;
-        mesaSelect.disabled = true;
-    }
-
-    const itemInput = document.getElementById("item");
-    const bebidaInput = document.getElementById("ibebidas");
-    const lista = document.getElementById("lista-comanda");
-    const totalSpan = document.getElementById("total");
-
-    let valor = 0;
-    let descricao = "";
-
-
-
-selecionados.forEach(opcao => {
-    descricao += (descricao ? " + " : "") + opcao.value;
-
-    if (cardapio[opcao.value] !== undefined) {
-        valor += cardapio[opcao.value];
-    }
-});
-   
-
-    const opcoesMarcadas = document.querySelectorAll('input[name="opcao"]:checked');
-
-    opcoesMarcadas.forEach(opcao => {
-        descricao += (descricao ? " + " : "") + opcao.value;
-
-        if (cardapio[opcao.value]) {
-            valor += cardapio[opcao.value];
+            nomeInput.disabled = true;
+            mesaSelect.disabled = true;
         }
-    });
 
-    if (valor === 0) {
-        alert("Selecione um item válido!");
-        return;
+        const itemInput = document.getElementById("item");
+        const lista = document.getElementById("lista-comanda");
+        const totalSpan = document.getElementById("total");
+
+        let valor = 0;
+        let descricao = "";
+
+        // Refeição principal
+        if (cardapio[itemInput.value] !== undefined) {
+            valor += cardapio[itemInput.value];
+            descricao += itemInput.value;
+        }
+
+        // Checkboxes (opções e bebidas)
+        const selecionados = document.querySelectorAll('input[name="opcao"]:checked');
+
+        selecionados.forEach(opcao => {
+            descricao += (descricao ? " + " : "") + opcao.value;
+
+            if (cardapio[opcao.value] !== undefined) {
+                valor += cardapio[opcao.value];
+            }
+        });
+
+        if (valor === 0) {
+            alert("Selecione um item válido!");
+            return;
+        }
+
+        total += valor;
+
+        const li = document.createElement("li");
+        li.textContent = descricao + " = R$ " + valor.toFixed(2);
+
+        lista.appendChild(li);
+        totalSpan.textContent = total.toFixed(2);
+
+        // Limpa campos
+        itemInput.value = "";
+        selecionados.forEach(op => op.checked = false);
     }
 
-    total += valor;
-
-    const li = document.createElement("li");
-    li.textContent = descricao + " = R$ " + valor.toFixed(2);
-
-    lista.appendChild(li);
-    totalSpan.textContent = total.toFixed(2);
-
-    itemInput.value = "";
-    bebidaInput.value = "";
-
-    opcoesMarcadas.forEach(op => op.checked = false);
-}
-   
-    
-
-
-function gerarNumeroComanda() {
-    const numeroComandaSpan = document.getElementById("numero-comanda");
-    numeroComandaSpan.textContent = "#" + numeroComanda.toString().padStart(4, "0");
-}
-
-function fecharPedido() {
-
-    if (total === 0) {
-        alert("Nenhum item na comanda!");
-        return;
+    function gerarNumeroComanda() {
+        const numeroComandaSpan = document.getElementById("numero-comanda");
+        numeroComandaSpan.textContent =
+            "#" + numeroComanda.toString().padStart(4, "0");
     }
 
-    alert("Pedido #" + numeroComanda.toString().padStart(4, "0") + " finalizado!");
+    function fecharPedido() {
 
-    numeroComanda++; // aumenta só aqui
+        if (total === 0) {
+            alert("Nenhum item na comanda!");
+            return;
+        }
 
-    total = 0;
-    document.getElementById("total").textContent = "0.00";
-    document.getElementById("lista-comanda").innerHTML = "";
+        alert("Pedido #" + numeroComanda.toString().padStart(4, "0") + " finalizado!");
 
-    gerarNumeroComanda(); // atualiza visual
+        numeroComanda++;
+        total = 0;
 
-    // liberar campos
-    document.getElementById("nome").disabled = false;
-    document.getElementById("mesa").disabled = false;
+        document.getElementById("total").textContent = "0.00";
+        document.getElementById("lista-comanda").innerHTML = "";
 
-    document.getElementById("nome").value = "";
-    document.getElementById("cliente-comanda").textContent = "-";
-    document.getElementById("mesa-comanda").textContent = "-";
-}
+        gerarNumeroComanda();
+
+        // Libera campos
+        document.getElementById("nome").disabled = false;
+        document.getElementById("mesa").disabled = false;
+
+        document.getElementById("nome").value = "";
+        document.getElementById("cliente-comanda").textContent = "-";
+        document.getElementById("mesa-comanda").textContent = "-";
+    }
+
+    // Gera número inicial ao carregar
+    gerarNumeroComanda();
+</script>
 
 
-</script>   
 
 </body>
 </html>
