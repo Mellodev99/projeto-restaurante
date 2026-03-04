@@ -2,7 +2,7 @@
 @charset "UTF-8";
 
 /*
-Nova Paleta de Cores - Sistema de Caixa
+Paleta de Cores - Sistema de Caixa
 Principal: Verde Profundo   #2D5A27
 Hover: Verde Escuro        #1E3F1B
 Fundo: Off-White/Cinza     #F8F9FA
@@ -12,14 +12,14 @@ Atenção/Aviso: Terracota   #BC4749
 */
 
 * {
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif; /* Fontes mais modernas */
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
     box-sizing: border-box;
 }
 
 .material-symbols-outlined {
     vertical-align: middle;
     font-size: 24px;
-    color: #2D5A27; /* Ícones acompanham a cor principal */
+    color: #d60c0c; /* Ícones acompanham a cor principal */
     margin-right: 8px;
 }
 
@@ -275,5 +275,19 @@ input[type="checkbox"] {
     margin-bottom: 10px;
 }
 .botao-limpar:hover {
-    background-color: #1E3F1B;
+    background-color: #641d1dd0;
+}
+.botao-adicionar-acompanhamentos{
+    width: 100%;
+    background-color: #2D5A27;
+    color: white;
+    padding: 12px 0;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+
 }
