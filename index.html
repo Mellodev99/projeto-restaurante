@@ -93,20 +93,32 @@
                     Selecionar todos
                 </button><br>
 
-                </div>
-
-               
-               
+            </div>
                 
+                <div id="caixa-bebidas">
+                    <!--Sugestões de bebidas-->
+                    <label for="ibebidas" id="ibebidas">Bebidas:</label> 
 
-                <!--<input type="reset" value="Limpar Bebida" id="ibebidas">
+                    <label id="icoca">
+                        <input type="checkbox" id="icoca" name="opcao" value="Coca-Cola"> Coca-Cola
+                    </label>
 
-                <!--Sugestões de bebidas-->
-                <label for="ibebidas" id="ibebidas">Bebidas:</label> <br>
-                <input type="checkbox" name="opcao" value="Coca-Cola"> Coca-Cola<br>
-                <input type="checkbox" name="opcao" value="Suco de Laranja"> Suco de Laranja<br>
-                <input type="checkbox" name="opcao" value="Água Mineral"> Água Mineral<br>
-            <br><br>
+                    <label id="isuco">
+                        <input type="checkbox" id="isuco" name="opcao" value="Suco de Laranja"> Suco de Laranja
+                    </label>
+
+                    <label id="iagua">
+                        <input type="checkbox" id="iagua" name="opcao" value="Água Mineral">  Água Mineral
+                       
+                    </label>
+                    <label id="ih2o"">
+                        <input type="checkbox"id="ih2o" name="opcao" value="H2O"> H2O
+                    </label>
+
+                    <button type="button" onclick="limparBebidas()">
+                        Limpar Bebidas
+                    </button>
+                </div>
 
          <button type="button" onclick="adicionarItem()">Adicionar Item</button>
          <input type="reset" value="Limpar Pedido">
@@ -305,6 +317,12 @@
     // O comando toggle coloca a classe se não existir, e tira se já existir
     menu.classList.toggle('aberto');
 }
+function limparBebidas() {
+    const bebidas = document.querySelectorAll('#caixa-bebidas input[type="checkbox"]');
+    bebidas.forEach(bebida => bebida.checked = false);
+}
+
+  </script>
 </script>
 
 
