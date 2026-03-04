@@ -48,7 +48,7 @@
                 </datalist>
                 <br><br>
 
-           <label for="iopcao">Opções:</label> <br>
+           <label for="iopcao" class="carnes">Opções de carne:</label> <br>
             <div id="caixa-carnes">
                 <label class="item-carne">
                     <input type="checkbox" name="opcao" value="Carne"> Carne
@@ -61,6 +61,11 @@
                 <label class="item-carne">
                     <input type="checkbox" name="opcao" value="Calabresa"> Calabresa
                 </label>
+
+                <button type="button" onclick="selecionarcarnes()">
+                    Selecionar todos
+
+                </button>
             </div>
                
 
@@ -83,14 +88,16 @@
                     <label class="item-salada">
                         <input type="checkbox" name="opcao" value="Salada" class="acomp"> Salada
                     </label>
+                    
+                    <button type="button" onclick="selecionarAcompanhamentos()">
+                    Selecionar todos
+                </button><br>
 
                 </div>
 
                
                
-                <button type="button" onclick="selecionarAcompanhamentos()">
-                    Selecionar todos
-                </button><br>
+                
 
                 <!--<input type="reset" value="Limpar Bebida" id="ibebidas">
 
@@ -204,7 +211,7 @@
     }
 
      function selecionarAcompanhamentos() {
-        const acompanhamentos = document.querySelectorAll('.acomp');
+        const acompanhamentos = document.querySelectorAll('.acomp , .carnes');
 
         const  todosMarcados = [...acompanhamentos].every(item =>item.checked);
         // Se todos já estão marcados, desmarca todos. Caso contrário, marca todos.
@@ -217,6 +224,23 @@
 
         acompanhamentos.forEach(acomp => {
             acomp.checked = true;
+        });
+    }
+
+    function selecionarcarnes() {
+        const carnes = document.querySelectorAll('.item-carne input[type="checkbox"]');
+
+        const  todosMarcados = [...carnes].every(item =>item.checked);
+        // Se todos já estão marcados, desmarca todos. Caso contrário, marca todos.
+            if (todosMarcados) {
+                carnes.forEach(carne => {
+                    carne.checked = false;
+                });
+                return;
+            }
+
+        carnes.forEach(carne => {
+            carne.checked = true;
         });
     }
 

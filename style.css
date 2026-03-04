@@ -144,7 +144,7 @@ button:hover {
     background-color: #1E3F1B;
 }
 
-/* Responsividade mantida e refinada */
+/* Responsividade  */
 @media screen and (max-width: 768px) {
     #menu-links {
         display: none;
@@ -233,3 +233,5 @@ input[type="checkbox"] {
     font-weight: 500;
     margin-bottom: 10px; /* Adiciona um espaço entre os itens */
 }
+
+
