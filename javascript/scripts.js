@@ -122,9 +122,6 @@
         });
     }
 
-
-
-
    function fecharPedido() {
     // 1. Verificação inicial: O total global é zero?
     if (total === 0) {
@@ -172,7 +169,6 @@
     // Atualiza o número visual da próxima comanda
     gerarNumeroComanda();
 }
-
    
     // Gera número inicial ao carregar
     gerarNumeroComanda();
