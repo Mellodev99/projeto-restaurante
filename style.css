@@ -234,4 +234,46 @@ input[type="checkbox"] {
     margin-bottom: 10px; /* Adiciona um espaço entre os itens */
 }
 
+#caixa-acompanhamentos input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+}
 
+#caixa-bebidas label:hover {
+    border-color: #2D5A27;
+    background-color: #f1f3f5;
+}
+#caixa-bebidas input[type="checkbox"]:checked + span {
+    font-weight: bold;
+}
+#caixa-bebidas label {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    margin-bottom: 10px; /* Adiciona um espaço entre os itens */
+}
+
+.botao-limpar {
+    width: 100%;
+    background-color: #2D5A27;
+    color: white;
+    padding: 12px 0;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.botao-limpar:hover {
+    background-color: #1E3F1B;
+}

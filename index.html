@@ -70,7 +70,7 @@
                
 
 
-               <label class="acomp">Acompanhamentos:</label><br>
+               <label class="acomp">Acompanhamentos:</label>
 
                 <div id="caixa-acompanhamentos">
                     <label class="item-arroz">
@@ -89,15 +89,17 @@
                         <input type="checkbox" name="opcao" value="Salada" class="acomp"> Salada
                     </label>
                     
-                    <button type="button" onclick="selecionarAcompanhamentos()">
+                    <button type="button" class="botao-limpar" onclick="selecionarAcompanhamentos()">
                     Selecionar todos
                 </button><br>
 
             </div>
-                
+
+                 <!--Sugestões de bebidas-->
+                    <label class="ibebidas">Bebidas:</label> 
+
                 <div id="caixa-bebidas">
-                    <!--Sugestões de bebidas-->
-                    <label for="ibebidas" id="ibebidas">Bebidas:</label> 
+                   
 
                     <label id="icoca">
                         <input type="checkbox" id="icoca" name="opcao" value="Coca-Cola"> Coca-Cola
@@ -115,7 +117,7 @@
                         <input type="checkbox"id="ih2o" name="opcao" value="H2O"> H2O
                     </label>
 
-                    <button type="button" onclick="limparBebidas()">
+                    <button type="button" class="botao-limpar" onclick="limparBebidas()">
                         Limpar Bebidas
                     </button>
                 </div>
