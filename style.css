@@ -1,47 +1,50 @@
+
 @charset "UTF-8";
 
-
 /*
-Cor principal	Laranja forte	#FF6B00
-Hover / destaque	Laranja escuro	#E85D04
-Fundo claro	Creme	#FFF4E6
-Fundo escuro	Marrom escuro	#3A2E2A
-Texto	Cinza quase preto	#2B2B2B
+Nova Paleta de Cores - Sistema de Caixa
+Principal: Verde Profundo   #2D5A27
+Hover: Verde Escuro        #1E3F1B
+Fundo: Off-White/Cinza     #F8F9FA
+Cards/Containers: Branco   #FFFFFF
+Texto: Antracite           #212529
+Atenção/Aviso: Terracota   #BC4749
 */
 
-*{
- font-family: Arial, sans-serif;
+* {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif; /* Fontes mais modernas */
+    box-sizing: border-box;
 }
 
 .material-symbols-outlined {
-    vertical-align: middle; /* Alinha o ícone com o texto ao lado */
+    vertical-align: middle;
     font-size: 24px;
-    color: #333;
+    color: #2D5A27; /* Ícones acompanham a cor principal */
     margin-right: 8px;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #FFF4E6; 
+    background-color: #F8F9FA; 
+    color: #212529;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background: linear-gradient(to right, #FF6B00, #E85D04);
+    background: #2D5A27; /* Cor sólida e profissional */
     color: white;
-    padding: 15 20px;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 header .material-symbols-outlined {
     color: white;
     margin: 0;
-    font-size: 30px; /* Um pouco maior para facilitar o toque no celular */
+    font-size: 30px;
 }
 
 ul {
@@ -50,151 +53,183 @@ ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 header ul li a {
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
 header ul li a:hover {
-    background-color: #E85D04;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
 }   
 
+/* Estilo para Botões de Ação Importante (Relatórios/Voltar) */
 #limparRelatorios {
-    background-color: #E85D04;
+    background-color: #BC4749; /* Terracota para avisar que apaga algo */
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    
-    border-radius: 5px;
-   
+    border-radius: 6px;
+    font-weight: bold;
 }
+
 #limparRelatorios:hover {
-    background-color: #FF6B00;
+    background-color: #9b3a3c;
 }
+
 #back {
     display: inline-block;
-  
-    color: #ffffff;
+    color: white;
     text-decoration: none;
-    background-color: #FF6B00;
+    background-color: #6c757d; /* Cinza neutro para voltar */
     padding: 10px 20px;
-    border-radius: 5px;
-   
+    border-radius: 6px;
+    font-weight: bold;
 }
+
 .botoes-acoes {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
-/* Estilização geral dos campos de entrada */
+
+/* Campos de Entrada Profissionais */
 input[type="text"], 
 input[list="itens"], 
 select {
     width: 100%;            
     padding: 12px;           
     margin: 8px 0 20px 0;    
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 8px;      
-    box-sizing: border-box; 
+    border: 1.5px solid #dee2e6;
+    border-radius: 6px;      
+    background-color: white;
     font-size: 16px;
-    outline: none;       
-    transition: border 0.3s; 
+    transition: border-color 0.2s;
 }
 
+input:focus, select:focus {
+    border-color: #2D5A27;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+}
 
-
-
-
-/* Estilo das labels (os nomes acima das caixas) */
 label {
-    font-weight: bold;
-    font-family: sans-serif;
-    color: #333;
+    font-weight: 600;
+    color: #495057;
 }
 
-/* Estilo dos botões do Index */
-button, input[type="reset"] {
-    padding: 12px 20px;
-    border-radius: 8px;      /* Mantendo o padrão de 8px */
+/* Botão de Confirmar/Vender */
+button {
+    background-color: #2D5A27;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #1E3F1B;
 }
 
-
-/* Configuração para Celular (Mobile) */
+/* Responsividade mantida e refinada */
 @media screen and (max-width: 768px) {
     #menu-links {
-        display: none;       /* Começa escondido */
+        display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #FF6B00;
+        background-color: #2D5A27;
         position: absolute;
-        top: 60px;           /* Ajuste conforme a altura do seu header */
+        top: 60px;
         left: 0;
-        border-bottom: 1px solid #ccc;
-        padding: 10px;
-        z-index: 1000;       /* Garante que fique por cima de tudo */
-        transition: 0.3s;          /* Animação suave para aparecer/desaparecer */
+        z-index: 1000;
+        padding: 15px;
     }
-      header ul.aberto {
-        display: flex;
-      }
 
-    /* Quando o JS colocar a classe 'aberto', o menu aparece */
     #menu-links.aberto {
         display: flex;
     }
+}
+#caixa-carnes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+}
 
-    #btn-menu {
-        display: block;      /* Mostra o ícone no celular */
-        cursor: pointer;
-    }
+/* Estiliza a linha da opção para parecer um botão */
+#caixa-carnes label {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+/* Efeito ao passar o mouse */
+#caixa-carnes label:hover {
+    border-color: #2D5A27;
+    background-color: #f1f3f5;
+}
+
+/* Quando o checkbox for marcado, o "botão" muda de cor */
+#caixa-carnes input[type="checkbox"]:checked + span {
+    font-weight: bold;
+}
+
+/* Destaque específico para o Frango como você pediu */
+#ifrango-container {
+    background-color: #1E3F1B !important; /* O verde escuro */
+    color: white !important;
+    border-color: #1E3F1B !important;
+}
+
+/* Aumenta o tamanho do checkbox para facilitar no toque/clique */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
 }
 
 
-/* Configuração para Computador (Desktop) */
-@media screen and (min-width: 769px) {
-    #btn-menu {
-        display: none;       /* Esconde o ícone no PC */
-    }
-
-    #menu-links {
-        display: flex !important; /* Menu sempre visível e deitado */
-        flex-direction: row;
-        gap: 20px;
-    }
+#caixa-acompanhamentos label:hover {
+    border-color: #2D5A27;
+    background-color: #f1f3f5;
 }
-
-/* Tablets e Computadores (Telas maiores que 768px) */
-@media screen and (min-width: 768px) {
-    .material-symbols-outlined {
-        display: none; /* Ícone some no computador */
-    }
-
-    header ul {
-        display: flex !important; /* Menu sempre visível no PC */
-        flex-direction: row;
-        gap: 20px;
-    }
+#caixa-acompanhamentos input[type="checkbox"]:checked + span {
+    font-weight: bold;
+}
+#caixa-acommpanhamentos label:hover {
+    border-color: #2D5A27;
+    background-color: #f1f3f5;
+}
+/*quebra a linha do checkbox para o próximo item, deixando um espaço entre eles*/
+#caixa-acompanhamentos label {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    margin-bottom: 10px; /* Adiciona um espaço entre os itens */
 }

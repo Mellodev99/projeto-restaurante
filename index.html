@@ -48,21 +48,45 @@
                 </datalist>
                 <br><br>
 
-                <!-- Opção de refeição -->
-               <label for="iopcao">Opções:</label> <br>
+           <label for="iopcao">Opções:</label> <br>
+            <div id="caixa-carnes">
+                <label class="item-carne">
+                    <input type="checkbox" name="opcao" value="Carne"> Carne
+                </label>
 
-               <input type="checkbox" name="opcao" value="Carne"> Carne<br>
-               <input type="checkbox" name="opcao" value="Frango"> Frango<br>
-               <input type="checkbox" name="opcao" value="Calabresa"> Calabresa<br>
+                <label class="item-carne" id="ifrango-box">
+                    <input type="checkbox" name="opcao" value="Frango" id="ifrango"> Frango
+                </label>
+
+                <label class="item-carne">
+                    <input type="checkbox" name="opcao" value="Calabresa"> Calabresa
+                </label>
+            </div>
+               
+
 
                <label class="acomp">Acompanhamentos:</label><br>
 
-     
+                <div id="caixa-acompanhamentos">
+                    <label class="item-arroz">
+                        <input type="checkbox" name="opcao" value="Arroz" class="acomp"> Arroz
+                    </label>
 
-               <input type="checkbox" name="opcao" value="Arroz" class="acomp"> Arroz<br>
-               <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão<br>
-               <input type="checkbox" name="opcao" value="Macarrão" class="acomp"> Macarrão<br>
-               <input type="checkbox" name="opcao" value="Salada" class="acomp"> Salada<br>
+                    <label class="item-feijão">
+                        <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão
+                    </label>
+
+                    <label class="item-macarrao">
+                        <input type="checkbox" name="opcao" value="Macarrão" class="acomp"> Macarrão
+                    </label>
+
+                    <label class="item-salada">
+                        <input type="checkbox" name="opcao" value="Salada" class="acomp"> Salada
+                    </label>
+
+                </div>
+
+               
                
                 <button type="button" onclick="selecionarAcompanhamentos()">
                     Selecionar todos
