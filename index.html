@@ -63,6 +63,12 @@
                     <input type="checkbox" name="opcao" value="Calabresa"> Calabresa
                 </label>
 
+                <label class="item-carne">
+                    <input type="checkbox" name="opcao" value="Fígado"> Fígado
+                </label>
+
+
+
                 <button type="button" onclick="selecionarcarnes()">
                     Selecionar todos
 
@@ -79,7 +85,10 @@
                     </label>
 
                     <label class="item-feijão">
-                        <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão
+                        <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão de caldo
+                    </label>
+                    <label class="item-feijão">
+                        <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão Tropeiro
                     </label>
 
                     <label class="item-macarrao">
@@ -111,15 +120,15 @@
                     </label>
 
                     <label id="isuco">
-                        <input type="checkbox" id="isuco" name="opcao" value="Suco de Laranja"> Suco 1l
+                        <input type="checkbox" id="isuco" name="opcao" value="Suco de Laranja R$4,00"> Suco 1l
                     </label>
 
                     <label id="iagua">
-                        <input type="checkbox" id="iagua" name="opcao" value="Água Mineral">  Água Mineral
+                        <input type="checkbox" id="iagua" name="opcao" value="Água Mineral R$3,00">  Água Mineral
                        
                     </label>
                     <label id="ih2o">
-                        <input type="checkbox"id="ih2o" name="opcao" value="H2O"> H2O
+                        <input type="checkbox"id="ih2o" name="opcao" value="H2O R$5,00"> H2O
                     </label>
 
                     <button type="button" class="botao-limpar" onclick="limparBebidas()">
@@ -128,7 +137,7 @@
                 </div>
 
          <button type="button" onclick="adicionarItem()">Adicionar Item</button>
-         <input type="reset" value="Limpar Pedido">
+         <input type="reset" value="Limpar Pedido" id="botao-limpar">
          <h3>Comanda <span id="numero-comanda">#0001</span></h3>
          <p><strong>Cliente:</strong> <span id="cliente-comanda">-</span></p>
          <p><strong>Mesa:</strong> <span id="mesa-comanda">-</span></p>

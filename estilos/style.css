@@ -19,10 +19,19 @@ Atenção/Aviso: Terracota   #BC4749
 .material-symbols-outlined {
     vertical-align: middle;
     font-size: 24px;
-    color: #d60c0c; /* Ícones acompanham a cor principal */
+    color: #0e0e0e; /* Ícones acompanham a cor principal */
     margin-right: 8px;
+    position: relative;
+    cursor: pointer;
 }
 
+.material-symbols-outlined:hover {
+    color: #1E3F1B; 
+   
+}
+.material-symbols-outlined#menu-toggle {
+    display: none; 
+}   
 body {
     background-color: #F8F9FA; 
     color: #212529;
@@ -31,20 +40,22 @@ body {
 }
 
 header {
-    background: #2D5A27; /* Cor sólida e profissional */
+    background: #2D5A27; 
     color: white;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 header .material-symbols-outlined {
     color: white;
     margin: 0;
     font-size: 30px;
+    margin-left: auto;
+
 }
 
 ul {
@@ -52,9 +63,10 @@ ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+   
     gap: 15px;
 }
+
 
 header ul li a {
     color: rgba(255, 255, 255, 0.9);
@@ -72,7 +84,7 @@ header ul li a:hover {
 
 /* Estilo para Botões de Ação Importante (Relatórios/Voltar) */
 #limparRelatorios {
-    background-color: #BC4749; /* Terracota para avisar que apaga algo */
+    background-color: #BC4749; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -151,10 +163,6 @@ button:hover {
         flex-direction: column;
         width: 100%;
         background-color: #2D5A27;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 1000;
         padding: 15px;
     }
 
@@ -290,4 +298,16 @@ input[type="checkbox"] {
     letter-spacing: 0.5px;
     margin-bottom: 10px;
 
+}
+#botao-limpar{
+    background-color: #BC4749; /* Terracota para avisar que apaga algo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+#botao-limpar:hover {
+    background-color: #9b3a3c;
 }
