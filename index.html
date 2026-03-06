@@ -6,11 +6,9 @@
     <title>Marmita Top10</title>
     <link rel="stylesheet" href="estilos/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
-    
 </head>
 <body>
     <header>
-    
         <h1>Quentinha Top</h1>
         <span class="material-symbols-outlined" id="btn-menu" onclick="toggleMenu()">menu</span>
         <nav>
@@ -21,16 +19,17 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <h2>Novo Pedido:</h2>
         <p>Selecione a mesa e adicione os itens do pedido:</p>
-        <form action="#" method="post" id="form-pedido">
+        
+        <form id="form-pedido">
+            <label for="nome">Nome do Cliente:</label>
+            <input type="text" id="nome" required>
 
-            <label for="nome" id="inome">Nome do Cliente:</label>
-            <input type="text" id="nome" name="nome" required>
-            <!-- Seleção da mesa -->
             <label for="mesa">Mesa:</label>
-            <select id="mesa" name="mesa">
+            <select id="mesa">
                 <option value="0">Retirada</option>
                 <option value="1">Mesa 1</option>
                 <option value="2">Mesa 2</option>
@@ -38,118 +37,65 @@
                 <option value="4">Mesa 4</option>
                 <option value="5">Mesa 5</option>
             </select>
-            <br><br>
-                <label for="item">Valor da refeição:</label>
+            
+            <hr>
 
-                <input list="itens" id="item" name="item" required placeholder="Selecione uma refeição" autocomplete="on">
+            <label for="item">Valor da refeição:</label>
+            <input list="itens" id="item" placeholder="Selecione uma refeição" autocomplete="off">
+            <datalist id="itens">
+                <option value="Refeição R$7,00">
+                <option value="Refeição R$10,00">
+            </datalist>
 
-                <datalist id="itens">
-                    <option value="Refeição R$7,00">
-                    <option value="Refeição R$10,00">
-                </datalist>
-                <br><br>
-
-           <label for="iopcao" class="carnes">Opções de carne:</label> <br>
-            <div id="caixa-carnes">
-                <label class="item-carne">
-                    <input type="checkbox" name="opcao" value="Carne"> Carne
-                </label>
-
-                <label class="item-carne" id="ifrango-box">
-                    <input type="checkbox" name="opcao" value="Frango" id="ifrango"> Frango
-                </label>
-
-                <label class="item-carne">
-                    <input type="checkbox" name="opcao" value="Calabresa"> Calabresa
-                </label>
-
-                <label class="item-carne">
-                    <input type="checkbox" name="opcao" value="Fígado"> Fígado
-                </label>
-
-
-
-                <button type="button" onclick="selecionarcarnes()">
-                    Selecionar todos
-
-                </button>
-            </div>
-               
-
-
-               <label class="acomp">Acompanhamentos:</label>
-
-                <div id="caixa-acompanhamentos">
-                    <label class="item-arroz">
-                        <input type="checkbox" name="opcao" value="Arroz" class="acomp"> Arroz
-                    </label>
-
-                    <label class="item-feijão">
-                        <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão de caldo
-                    </label>
-                    <label class="item-feijão">
-                        <input type="checkbox" name="opcao" value="Feijão" class="acomp"> Feijão Tropeiro
-                    </label>
-
-                    <label class="item-macarrao">
-                        <input type="checkbox" name="opcao" value="Macarrão" class="acomp"> Macarrão
-                    </label>
-
-                    <label class="item-salada">
-                        <input type="checkbox" name="opcao" value="Salada" class="acomp"> Salada
-                    </label>
-                    
-                    <button type="button" class="botao-adicionar-acompanhamentos" onclick="selecionarAcompanhamentos()">
-                    Selecionar todos
-                </button>
-
+            <label class="carnes">Opções de carne:</label> 
+            <div id="caixa-carnes" class="caixa-opcoes">
+                <label><input type="checkbox" name="opcao" value="Carne"> Carne</label>
+                <label><input type="checkbox" name="opcao" value="Frango"> Frango</label>
+                <label><input type="checkbox" name="opcao" value="Calabresa"> Calabresa</label>
+                <label><input type="checkbox" name="opcao" value="Fígado"> Fígado</label>
+                <button type="button" onclick="selecionarcarnes()">Selecionar carnes</button>
             </div>
 
-                 <!--Sugestões de bebidas-->
-                    <label class="ibebidas">Bebidas:</label> 
+            <label class="acomp">Acompanhamentos:</label>
+            <div id="caixa-acompanhamentos" class="caixa-opcoes">
+                <label><input type="checkbox" name="opcao" value="Arroz"> Arroz</label>
+                <label><input type="checkbox" name="opcao" value="Feijão"> Feijão de caldo</label>
+                <label><input type="checkbox" name="opcao" value="Feijão"> Feijão Tropeiro</label>
+                <label><input type="checkbox" name="opcao" value="Macarrão"> Macarrão</label>
+                <label><input type="checkbox" name="opcao" value="Salada"> Salada</label>
+                <button type="button" onclick="selecionarAcompanhamentos()">Selecionar acompanhamentos</button>
+            </div>
 
-                <div id="caixa-bebidas">
-                   
+            <label class="ibebidas">Bebidas:</label> 
+            <div id="caixa-bebidas" class="caixa-opcoes">
+                <label><input type="checkbox" name="opcao" value="Coca-Cola 1L"> Coca-Cola 1L</label>
+                <label><input type="checkbox" name="opcao" value="Coca-Cola 350ml"> Coca-Cola 350ml</label>
+                <label><input type="checkbox" name="opcao" value="Suco"> Suco 1l</label>
+                <label><input type="checkbox" name="opcao" value="Água Mineral"> Água Mineral</label>
+                <label><input type="checkbox" name="opcao" value="H2O"> H2O</label>
+                <button type="button" class="botao-limpar" onclick="limparBebidas()">Limpar Bebidas</button>
+            </div>
 
-                    <label id="icoca">
-                        <input type="checkbox" id="icoca" name="opcao" value="Coca-Cola"> Coca-Cola 1L
-                    </label>
+            <div style="margin-top: 20px;">
+                <button type="button" onclick="adicionarItem()" style="background: #2D5A27;">Adicionar à Comanda</button>
+                <button type="reset" onclick="limparSistema()" style="background: #6c757d;">Limpar Tudo</button>
+            </div>
 
-                     <label id="icoca-lata">
-                        <input type="checkbox" id="icoca-lata" name="opcao" value="Coca-Cola"> Coca-Cola 350ml
-                    </label>
+            <hr>
 
-                    <label id="isuco">
-                        <input type="checkbox" id="isuco" name="opcao" value="Suco de Laranja R$4,00"> Suco 1l
-                    </label>
+            <div id="resumo-comanda">
+                <h3>Comanda <span id="numero-comanda">#0001</span></h3>
+                <p><strong>Cliente:</strong> <span id="cliente-comanda">-</span></p>
+                <p><strong>Mesa:</strong> <span id="mesa-comanda">-</span></p>
 
-                    <label id="iagua">
-                        <input type="checkbox" id="iagua" name="opcao" value="Água Mineral R$3,00">  Água Mineral
-                       
-                    </label>
-                    <label id="ih2o">
-                        <input type="checkbox"id="ih2o" name="opcao" value="H2O R$5,00"> H2O
-                    </label>
+                <ul id="lista-comanda"></ul>
 
-                    <button type="button" class="botao-limpar" onclick="limparBebidas()">
-                        Limpar Bebidas
-                    </button>
-                </div>
-
-         <button type="button" onclick="adicionarItem()">Adicionar Item</button>
-         <input type="reset" value="Limpar Pedido" id="botao-limpar">
-         <h3>Comanda <span id="numero-comanda">#0001</span></h3>
-         <p><strong>Cliente:</strong> <span id="cliente-comanda">-</span></p>
-         <p><strong>Mesa:</strong> <span id="mesa-comanda">-</span></p>
-
-            <ul id="lista-comanda"></ul>
-
-            <p><strong>Total: R$ <span id="total">0.00</span></strong></p>
-             <button type="button" onclick="fecharPedido()">Fechar Pedido</button>
+                <p><strong>Total: R$ <span id="total">0.00</span></strong></p>
+                <button type="button" onclick="fecharPedido()" style="width: 100%; font-size: 1.2em;">FECHAR PEDIDO</button>
+            </div>
         </form>
     </main>
 
     <script src="javascript/scripts.js"></script>
-
 </body>
 </html>
