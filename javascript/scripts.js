@@ -23,6 +23,12 @@ const cardapio = {
     "Salada": 0
 };
 
+function toggleMenu() {
+    const menu = document.getElementById('menu-links');
+    menu.classList.toggle('aberto');
+    console.log("Menu clicado! Classe 'aberto' está presente?", menu.classList.contains('aberto'));
+}
+
 function adicionarItem() {
     const nomeInput = document.getElementById("nome");
     const mesaSelect = document.getElementById("mesa");
@@ -158,3 +164,5 @@ function limparSistema() {
     document.getElementById("mesa").disabled = false;
     document.getElementById("nome").value = "";
     document.getElementById("cliente-comanda").textContent = "-";}
+
+ 
