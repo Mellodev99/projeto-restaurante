@@ -182,7 +182,8 @@ button:hover { background: #1E3F1B; }
     text-decoration: none;
     transition: .3s;
 }
-#back:hover { background: #1E3F1B; }
+#back:hover { background: #1E3F1B; 
+}
 
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
